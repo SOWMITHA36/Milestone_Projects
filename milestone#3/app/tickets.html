@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>A Template App</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script async src="{{{appclient}}}"></script>
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+
+<body>
+  <p id="tickets"></p>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    app.initialized().then(function (client) {
+      window.client = client;
+      client.instance.context().then(function (context) {
+        let data = context.data;
+        const { ticket: { id, created_at, updated_at, status, priority, description } } = data;
+        const createdAtFormatted = new Date(created_at).toLocaleString();
+        const updatedAtFormatted = new Date(updated_at).toLocaleString();
+        const descriptionFormatted = description ? description.trim() : 'No description';
+
+        
+        document.getElementById('tickets').innerHTML = `
+      ID: ${id}<br>
+      Description: ${descriptionFormatted}<br>
+      Status Type: ${status}<br>
+      Priority: ${priority}<br>
+      Created At: ${createdAtFormatted}<br>
+      Updated At: ${updatedAtFormatted}
+    `;
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript" src="scripts/app.js"></script>
+<script async type="module"
+  src="https://cdn.jsdelivr.net/npm/@freshworks/crayons@v4/dist/crayons/crayons.esm.js"></script>
+<script async nomodule src="https://cdn.jsdelivr.net/npm/@freshworks/crayons@v4/dist/crayons/crayons.js"></script>
+
+</html>
