@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Configure Signatures Management Plus App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+	<script type="text/javascript" src="recursiveGetData.js"></script>
+	<script type="text/javascript" src="errorFunction.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.css" integrity="sha256-kalgQ55Pfy9YBkT+4yYYd5N8Iobe+iWeBuzP7LjVO0o=" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.js" integrity="sha256-7QI04ySSWOSntO1zRz4OathEWRGoHz5kLVy+wHkB+UE=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha256-nbyata2PJRjImhByQzik2ot6gSHSU4Cqdz5bNYL2zcU=" crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- froala requirements -->
+	<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css"-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+	    /*!
+		 * froala_editor v2.6.0 (https://www.froala.com/wysiwyg-editor)
+		 * License https://froala.com/wysiwyg-editor/terms/
+		 * Copyright 2014-2017 Froala Labs
+		 */
+
+		 .clearfix::after{clear:both;display:block;content:"";height:0}.hide-by-clipping{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.fr-view span[style~="color:"] a{color:inherit}.fr-view strong{font-weight:700}.fr-view table{border:0;border-collapse:collapse;empty-cells:show;max-width:100%}.fr-view table.fr-dashed-borders td,.fr-view table.fr-dashed-borders th{border-style:dashed}.fr-view table.fr-alternate-rows tbody tr:nth-child(2n){background:#f5f5f5}.fr-view table td,.fr-view table th{border:none}.fr-view table td:empty,.fr-view table th:empty{height:20px}.fr-view table td.fr-highlighted,.fr-view table th.fr-highlighted{border:none}.fr-view table td.fr-thick,.fr-view table th.fr-thick{border-width:0px;}.fr-view table th{background:#e6e6e6}.fr-view hr{clear:both;user-select:none;-o-user-select:none;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;page-break-after:always}.fr-view .fr-file{position:relative}.fr-view .fr-file::after{position:relative;content:"\1F4CE";font-weight:400}.fr-view pre{white-space:pre-wrap;word-wrap:break-word}.fr-view[dir=rtl] blockquote{border-left:0;border-right:solid 2px #5e35b1;margin-right:0;padding-right:5px;padding-left:0}.fr-view[dir=rtl] blockquote blockquote{border-color:#00bcd4}.fr-view[dir=rtl] blockquote blockquote blockquote{border-color:#43a047}.fr-view blockquote{border-left:solid 2px #5e35b1;margin-left:0;padding-left:5px;color:#5e35b1}.fr-view blockquote blockquote{border-color:#00bcd4;color:#00bcd4}.fr-view blockquote blockquote blockquote{border-color:#43a047;color:#43a047}.fr-view span.fr-emoticon{font-weight:400;font-family:"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Segoe UI Symbol","Android Emoji",EmojiSymbols;display:inline;line-height:0}.fr-view span.fr-emoticon.fr-emoticon-img{background-repeat:no-repeat!important;font-size:inherit;height:1em;width:1em;min-height:20px;min-width:20px;display:inline-block;margin:-.1em .1em .1em;line-height:1;vertical-align:middle}.fr-view .fr-text-gray{color:#AAA!important}.fr-view .fr-text-bordered{border-top:solid 1px #222;border-bottom:solid 1px #222;padding:10px 0}.fr-view .fr-text-spaced{letter-spacing:1px}.fr-view .fr-text-uppercase{text-transform:uppercase}.fr-view img{position:relative;max-width:100%}.fr-view img.fr-dib{margin:5px auto;display:block;float:none;vertical-align:top}.fr-view img.fr-dib.fr-fil{margin-left:0}.fr-view img.fr-dib.fr-fir{margin-right:0}.fr-view img.fr-dii{display:inline-block;float:none;vertical-align:bottom;margin-left:5px;margin-right:5px;max-width:calc(100% - (2 * 5px))}.fr-view img.fr-dii.fr-fil{float:left;margin:5px 5px 5px 0;max-width:calc(100% - 5px)}.fr-view img.fr-dii.fr-fir{float:right;margin:5px 0 5px 5px;max-width:calc(100% - 5px)}.fr-view img.fr-rounded{border-radius:100%;-moz-border-radius:100%;-webkit-border-radius:100%;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}.fr-view img.fr-bordered{border:solid 10px #CCC;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}.fr-view .fr-video{text-align:center;position:relative}.fr-view .fr-video>*{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;max-width:100%;border:0}.fr-view .fr-video.fr-dvb{display:block;clear:both}.fr-view .fr-video.fr-dvb.fr-fvl{text-align:left}.fr-view .fr-video.fr-dvb.fr-fvr{text-align:right}.fr-view .fr-video.fr-dvi{display:inline-block}.fr-view .fr-video.fr-dvi.fr-fvl{float:left}.fr-view .fr-video.fr-dvi.fr-fvr{float:right}.fr-view a.fr-strong{font-weight:700}.fr-view a.fr-green{color:green}.fr-view button.fr-rounded,.fr-view input.fr-rounded,.fr-view textarea.fr-rounded{border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}.fr-view button.fr-large,.fr-view input.fr-large,.fr-view textarea.fr-large{font-size:24px}a.fr-view.fr-strong{font-weight:700}a.fr-view.fr-green{color:green}img.fr-view{position:relative;max-width:100%}img.fr-view.fr-dib{margin:5px auto;display:block;float:none;vertical-align:top}img.fr-view.fr-dib.fr-fil{margin-left:0}img.fr-view.fr-dib.fr-fir{margin-right:0}img.fr-view.fr-dii{display:inline-block;float:none;vertical-align:bottom;margin-left:5px;margin-right:5px;max-width:calc(100% - (2 * 5px))}img.fr-view.fr-dii.fr-fil{float:left;margin:5px 5px 5px 0;max-width:calc(100% - 5px)}img.fr-view.fr-dii.fr-fir{float:right;margin:5px 0 5px 5px;max-width:calc(100% - 5px)}img.fr-view.fr-rounded{border-radius:100%;-moz-border-radius:100%;-webkit-border-radius:100%;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}img.fr-view.fr-bordered{border:solid 10px #CCC;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+
+		 /*
+		  custom froala css
+		  */
+		  .fr-input-line label{
+		  	padding-top: 0px!important;
+		  }
+
+		  .btn-file {
+		  	position: relative;
+		  	overflow: hidden;
+		  	margin-top: 10px;
+		  }
+		  .btn-file input[type=file] {
+		  	position: absolute;
+		  	top: 0;
+		  	right: 0;
+		  	min-width: 100%;
+		  	min-height: 100%;
+		  	font-size: 100px;
+		  	text-align: right;
+		  	filter: alpha(opacity=0);
+		  	opacity: 0;
+		  	outline: none;
+		  	background: white;
+		  	cursor: inherit;
+		  	display: block;
+		  }
+
+		  #downloadConfigs{
+		  	margin-top: 10px;
+		  }
+	</style>
+</head>
+<body>
+	<div class="container outer" id="overlay" style="display: none">
+		<div classs="row" style="height:100%;">
+			<div class="col" id="flex-container">
+				<div style="" id="processListNormal">
+					<div style="display: block;width: 100%;text-align: center;"><div id="ripple" class="lds-ripple"><div></div><div></div></div></div>
+					<div style="margin-bottom: 10px;">Please Wait...</div>
+				</div>
+				<div style="display: none;" id="processListError">
+					<div class="text-danger" style="display: block;width: 100%;text-align: center;">
+						<i class="fa fa-exclamation-triangle"></i>
+					</div>
+					<div style="margin-bottom: 10px;" class="text-danger">
+						Error! Please try refreshing.
+					</div>
+				</div>
+				<div style="display: block;">
+					<ul id="processList">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container outer" id="layer1">
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-default" onclick="addSignatureClicked()"><i class="fa fa-plus"></i> Add Signature</button>
+				<div class="float-right">
+					<!--button class="btn btn-default">Download Backup</button>
+					<button class="btn btn-default">Restore Backup</button-->
+				</div>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="row">
+					<div class="col">
+						<span class="text-info">Number of signatures : </span>
+						<span id="signatureCountBox" class="badge badge-pill badge-info">
+							<span id="signatureCount"> - </span>
+							<span id="added1"><i class="fa fa-plus" style="font-size: 11px;"></i>&nbsp;1</span>
+							<span id="deleted1"><i class="fa fa-minus" style="font-size: 9px;"></i>&nbsp;1</span>
+						</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<label for="signatureSearch" style="width: 250px;">
+							<span style="font-size: 12px;">
+								Search for Signatures<br>
+							</span>
+							<select id="signatureSearch">
+								<option value=0></option>
+							</select>
+						</label>
+						<button class="btn btn-default" id="signaturePreviewBtn">
+							Preview
+						</button>
+						<button class="btn btn-default" id="signatureEditBtn">
+							Edit
+						</button>
+					</div>
+				</div>
+				<div class="alert alert-danger" id="signatureSelectError" style="display: none;"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div id="signaturePreviewBox" style="display: none;">
+					<div class="row">
+						<div class="col">
+							<h4 class="text-info" id="signaturePreviewBoxName">Signature Name</h4>
+							<input type="hidden" id="signaturePreviewKey">
+						</div>
+						<div class="col" style="min-height: 50px;">
+							<button type="button" class="btn btn-danger float-right" id="deleteSignature" data-signature-id="0">Delete</button>
+							<div id="deleteConfirmDiv" style="display: none;">
+								<span class="float-right">Delete this signature?</span>
+								<br>
+								<button type="button" class="btn btn-default float-right" style="margin-right: 5px;" id="deleteSignatureCancel">No.</button>
+								<button type="button" class="btn btn-danger float-right" style="margin-right: 5px;" id="deleteSignatureConfirm">Yes.</button>
+							</div>
+						</div>
+					</div>
+					<span id="signaturePreviewConditions"></span>
+						Groups: <span class="text-primary" id="spanGroups">asda, asda,</span><br>
+						Products: <span class="text-primary" id="spanProducts">qweq, aksdla</span>
+					<br>
+					<span>Signature was last edited by: <span id="lastEditBy" class="text-primary"></span> (<span id="lastEditTime"></span>)</span>
+					<hr>
+					<h3 style="opacity: 0.5">Preview</h3>
+					<div id="signature-preview" style="">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="outer" id="layer2" style="">
+		<input type="text" id="editSignatureName" tabindex="1" class="form-control" placeholder="Signature Title" aria-label="Signature Title" required="true" minlength="4" maxlength="20" pattern="^[a-zA-Z][a-zA-Z0-9_]{1,20}$">
+		<input type="hidden" id="editSignatureUniqid">
+		<span id="editSignatureNameErr" class="text-danger" style="display: none;">Please fill in the signature Name (Min 4 characters, max 20 characters; Allowed Characters : Alphabets, Numbers and '_'. Name must start with an alphabet.).</span>
+		<br/>
+		<h5>Placeholders</h5>
+		<button class="btn btn-default placeholders" value="{{ agent.name }}">Agent Name</button>
+        <button class="btn btn-default placeholders" value="{{ agent.email }}">Agent Email</button>
+        <button class="btn btn-default placeholders" value="{{ ticket.agent.firstname }}">Agent First Name</button>
+        <button class="btn btn-default placeholders" value="{{ ticket.agent.title }}">Agent Title</button>
+        <button class="btn btn-default placeholders" value="{{ product.name }}">Product Name</button>
+        <button class="btn btn-default placeholders" value="{{ product.description }}">Product Description</button>
+        <button class="btn btn-default placeholders" value="{{ agent.mobile }}">Mobile Number</button>
+        <button class="btn btn-default placeholders" value="{{ agent.phone }}">Phone Number</button>
+        <button class="btn btn-default placeholders" value="{{ ticket.id }}">Ticket ID</button>
+		<div style="padding: 1px;">
+			<textarea id="signatureEdit" required style="margin: 1px;"></textarea>
+			<span id="signatureEditErr" class="text-danger" style="display: none;">Please fill in the signature.</span>
+		</div>
+		<label for="editSignatureConditions">Select Conditions</label>
+		<select id="editSignatureConditions" name="editSignatureConditions" style="font-size: 11px;" multiple="multiple">
+			<optgroup label="Groups">
+
+			</optgroup>
+			<optgroup label="Products">
+
+			</optgroup>
+		</select>
+		<span id="editSignatureConditionsErr" class="text-danger" style="display: none;">Please select at least one condition.</span>
+		<br>
+		<div id='editInputBox'>
+			<button type="button" class="btn btn-success" id="saveEditSignature" data-signature-id="0">Save</button>
+			<button id="saveEditSignatureCancel" style="margin-top:5px;" type="button" onclick="showLayer1()" class="btn btn-default">Cancel</button>
+		</div>
+		<div class="circle-loader" id="editLoader" style="display:none;">
+		  <div class="checkmark draw"></div>
+		</div>
+		<br/>
+		<div id="saveEditSignatureSuccess" style="width: 100%;display: none;" class="alert alert-success">Signature edited successfully.</div>
+		<span id="saveEditSignatureErr" class="text-danger" style="display: none;"></span>
+	</div>
+	<div class="outer" id="layer3">
+		<input type="text" id="addSignatureName" tabindex="1" class="form-control" placeholder="Signature Title" aria-label="Signature Title" required="true" minlength="4" maxlength="20" pattern="^[a-zA-Z][a-zA-Z0-9_]{1,20}$">
+		<span id="addSignatureNameErr" class="text-danger" style="display: none;">Please fill in the signature Name (Min 4 characters, max 20 characters; Allowed Characters : Alphabets, Numbers and '_'. Name must start with an alphabet.).</span>
+		<br/>
+		<h5>Placeholders</h5>
+		<button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ agent.name }}">Agent Name</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ agent.email }}">Agent Email</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ ticket.agent.firstname }}">Agent First Name</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ ticket.agent.title }}">Agent Title</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ product.name }}">Product Name</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ product.description }}">Product Description</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ agent.mobile }}">Mobile Number</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ agent.phone }}">Phone Number</button>
+        <button tabindex="-1" class="btn btn-default placeholdersAdd" value="{{ ticket.id }}">Ticket ID</button>
+		<div style="padding: 1px;">
+			<textarea id="signatureAdd" required style="margin: 1px;">With Regards, <p>{{ agent.name }}</p></textarea>
+			<span id="signatureAddErr" class="text-danger" style="display: none;">Please fill in the signature.</span>
+		</div>
+		<label for="addSignatureConditions">Select Conditions</label>
+		<select id="addSignatureConditions" name="addSignatureConditions" style="font-size: 11px;" multiple="multiple">
+			<optgroup label="Groups">
+
+			</optgroup>
+			<optgroup label="Products">
+
+			</optgroup>
+		</select>
+		<span id="addSignatureConditionsErr" class="text-danger" style="display: none;">Please select at least one condition.</span>
+		<br/>
+		<button style="margin-top:5px;" type="button" class="btn btn-success" id="saveNewSignature" data-signature-id="0">Save</button>
+		<button style="margin-top:5px;" type="button" onclick="showLayer1()" id="saveNewSignatureCancel" class="btn btn-default">Cancel</button>
+		<br/>
+		<div id="saveNewSignatureSuccess" style="width: 100%;display: none;" class="alert alert-success">Signature stored successfully.</div>
+		<span id="saveNewSignatureErr" class="text-danger" style="display: none;"></span>
+	</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/plugins/lists.min.js"></script>
+	<script src="utf816.js"></script>
+	<script src="signature-configuration-module.js"></script>
+</body>
+</html>

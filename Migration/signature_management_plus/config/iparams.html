@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+
+  <!--optional-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <!-- optional-->
+  <!-- for pop up info -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+  <!-- Include Editor style. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+
+  body {
+    background-color: #fafafa ;
+  }
+
+  input[type="text"] {
+    border-radius: 2px;
+    border: 1px solid #9a9a9a;
+    padding: 18px 10px;
+  }
+
+  input[type="text"]:invalid{
+    box-shadow: none;
+  }
+
+  #domain:valid{
+    color:green;
+  }
+
+  input[type="text"]:focus{
+    border: 1px solid green;
+  }
+
+  #domain:invalid:focus {
+    color:red;
+    box-shadow: none;
+  }
+
+  #iparams-lvl1{
+    display:inherit;
+  }
+
+  #iparams-lvl2{
+    display:none;
+  }
+
+  .btn.placeholderButton {
+    width: 185px ;
+  }
+
+  .accordion {
+    margin-bottom: 18px;
+  }
+
+  .dropdown {
+   width: 10%;
+   color: black;
+   border: 5;
+ }
+
+ .select2-locked {
+  padding: 0px !important;
+}
+
+.select2-container.select2-container-multi {
+  background-color: #fff ;
+}
+
+.select2-container.condition-main-choice{
+  min-width: 160px;
+}
+
+.accordion-group {
+  margin-bottom: 2px;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+div[class^="accordion-group-"] {
+  margin-bottom: 5px ;
+}
+
+.accordion-heading {
+  border-bottom: 0;
+  /*fer0x*/
+  background-color: #eee ;
+  text-transform: uppercase ;
+  border: 1px solid #dedede ;
+}
+
+.accordion-heading .accordion-toggle {
+  display: block;
+  padding: 8px 15px;
+}
+
+.accordion-inner {
+  padding: 9px 15px;
+  border-top: 0 ;
+  border-left: 1px solid #dedede;
+  border-right: 1px solid #dedede ;
+  border-bottom: 1px solid #dedede ;
+  background-color: #fff ;
+}
+
+.collapse {
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -ms-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  height: 0;
+}
+
+.collapse.in {
+  height: auto;
+}
+
+.accordion-body {
+  background-color: #fdfdfd ;
+}
+
+.delete-button{
+  min-width:40px;
+}
+
+.select2{
+  min-width:200px;
+}
+a.accordion-toggle {
+  text-decoration: none ;
+  font-weight: bold ;
+  color: inherit ;
+}
+
+.required:after {
+  content: ' *' ;
+  color: red ;
+}
+
+.left {
+  text-align: left ;
+}
+
+.right {
+  text-align: right ;
+}
+
+.error {
+  color: red ;
+}
+
+input[type=text] {
+  width: 100% ;
+  height: 28px ;
+}
+
+label {
+  font-weight: bold ;
+}
+
+.dropdown {
+  width: 100% ;
+}
+
+.select-full-width {
+  width: 33%;
+}
+.error-accordion {
+  border: 1px solid red;
+}
+
+.fa-info:before {
+  content: '' !important ;
+}
+
+.verify-button {
+  margin-top: 10px ;
+}
+
+.placeholders{
+  margin-bottom: 5px;
+}
+    /*!
+ * froala_editor v2.6.0 (https://www.froala.com/wysiwyg-editor)
+ * License https://froala.com/wysiwyg-editor/terms/
+ * Copyright 2014-2017 Froala Labs
+ */
+
+ .clearfix::after{clear:both;display:block;content:"";height:0}.hide-by-clipping{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.fr-view span[style~="color:"] a{color:inherit}.fr-view strong{font-weight:700}.fr-view table{border:0;border-collapse:collapse;empty-cells:show;max-width:100%}.fr-view table.fr-dashed-borders td,.fr-view table.fr-dashed-borders th{border-style:dashed}.fr-view table.fr-alternate-rows tbody tr:nth-child(2n){background:#f5f5f5}.fr-view table td,.fr-view table th{border:none}.fr-view table td:empty,.fr-view table th:empty{height:20px}.fr-view table td.fr-highlighted,.fr-view table th.fr-highlighted{border:none}.fr-view table td.fr-thick,.fr-view table th.fr-thick{border-width:0px;}.fr-view table th{background:#e6e6e6}.fr-view hr{clear:both;user-select:none;-o-user-select:none;-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;page-break-after:always}.fr-view .fr-file{position:relative}.fr-view .fr-file::after{position:relative;content:"\1F4CE";font-weight:400}.fr-view pre{white-space:pre-wrap;word-wrap:break-word}.fr-view[dir=rtl] blockquote{border-left:0;border-right:solid 2px #5e35b1;margin-right:0;padding-right:5px;padding-left:0}.fr-view[dir=rtl] blockquote blockquote{border-color:#00bcd4}.fr-view[dir=rtl] blockquote blockquote blockquote{border-color:#43a047}.fr-view blockquote{border-left:solid 2px #5e35b1;margin-left:0;padding-left:5px;color:#5e35b1}.fr-view blockquote blockquote{border-color:#00bcd4;color:#00bcd4}.fr-view blockquote blockquote blockquote{border-color:#43a047;color:#43a047}.fr-view span.fr-emoticon{font-weight:400;font-family:"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Segoe UI Symbol","Android Emoji",EmojiSymbols;display:inline;line-height:0}.fr-view span.fr-emoticon.fr-emoticon-img{background-repeat:no-repeat!important;font-size:inherit;height:1em;width:1em;min-height:20px;min-width:20px;display:inline-block;margin:-.1em .1em .1em;line-height:1;vertical-align:middle}.fr-view .fr-text-gray{color:#AAA!important}.fr-view .fr-text-bordered{border-top:solid 1px #222;border-bottom:solid 1px #222;padding:10px 0}.fr-view .fr-text-spaced{letter-spacing:1px}.fr-view .fr-text-uppercase{text-transform:uppercase}.fr-view img{position:relative;max-width:100%}.fr-view img.fr-dib{margin:5px auto;display:block;float:none;}.fr-view img.fr-dib.fr-fil{margin-left:0}.fr-view img.fr-dib.fr-fir{margin-right:0}.fr-view img.fr-dii{display:inline-block;float:none;vertical-align:bottom;margin-left:5px;margin-right:5px;max-width:calc(100% - (2 * 5px))}.fr-view img.fr-dii.fr-fil{float:left;margin:5px 5px 5px 0;max-width:calc(100% - 5px)}.fr-view img.fr-dii.fr-fir{float:right;margin:5px 0 5px 5px;max-width:calc(100% - 5px)}.fr-view img.fr-rounded{border-radius:100%;-moz-border-radius:100%;-webkit-border-radius:100%;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}.fr-view img.fr-bordered{border:solid 10px #CCC;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}.fr-view .fr-video{text-align:center;position:relative}.fr-view .fr-video>*{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;max-width:100%;border:0}.fr-view .fr-video.fr-dvb{display:block;clear:both}.fr-view .fr-video.fr-dvb.fr-fvl{text-align:left}.fr-view .fr-video.fr-dvb.fr-fvr{text-align:right}.fr-view .fr-video.fr-dvi{display:inline-block}.fr-view .fr-video.fr-dvi.fr-fvl{float:left}.fr-view .fr-video.fr-dvi.fr-fvr{float:right}.fr-view a.fr-strong{font-weight:700}.fr-view a.fr-green{color:green}.fr-view button.fr-rounded,.fr-view input.fr-rounded,.fr-view textarea.fr-rounded{border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}.fr-view button.fr-large,.fr-view input.fr-large,.fr-view textarea.fr-large{font-size:24px}a.fr-view.fr-strong{font-weight:700}a.fr-view.fr-green{color:green}img.fr-view{position:relative;max-width:100%}img.fr-view.fr-dib{margin:5px auto;display:block;float:none;}img.fr-view.fr-dib.fr-fil{margin-left:0}img.fr-view.fr-dib.fr-fir{margin-right:0}img.fr-view.fr-dii{display:inline-block;float:none;vertical-align:bottom;margin-left:5px;margin-right:5px;max-width:calc(100% - (2 * 5px))}img.fr-view.fr-dii.fr-fil{float:left;margin:5px 5px 5px 0;max-width:calc(100% - 5px)}img.fr-view.fr-dii.fr-fir{float:right;margin:5px 0 5px 5px;max-width:calc(100% - 5px)}img.fr-view.fr-rounded{border-radius:100%;-moz-border-radius:100%;-webkit-border-radius:100%;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box}img.fr-view.fr-bordered{border:solid 10px #CCC;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
+
+  /*
+  custom froala css
+  */
+  .fr-input-line label{
+    padding-top: 0px!important;
+  }
+
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+    float: right;
+  }
+  .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+  }
+
+</style>
+<title></title>
+</head>
+<body>
+
+  <!-- Signature Accordion -->
+  <div class="container-fluid" id="iparams-lvl1">
+    <div class="row">
+      <div class="col-md-12">
+        <div style="float:right;">Version 0.9</div>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-sm-6">
+            <div id="verify-error" class="alert alert-warning" style="margin-top:10px;">
+              <i class="fa fa-info-circle "></i> You must <strong>Verify</strong> DOMAIN and API KEY before you can proceed.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6" id="errorsDiv">
+            <div class="alert alert-danger" style="display:none;" id="domain-apikey">Please enter "Domain Name" and "API Key"</div>
+            <div class="alert alert-danger" style="display:none;" id="domainerror">Please enter valid "Domain Name"</div>
+            <div class="alert alert-danger" style="display:none;" id="generalError"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="fdkDomain" title="eg : honeybadgerlabs.freshdesk.com">Domain Name</label>
+            <input type="text" onchange="setVerifiedFalse();" name="fdkDomain" placeholder="eg : honeybadgerlabs.freshdesk.com" id="domain" pattern="^[a-zA-Z0-9\-]+\.freshdesk\.com$" required><br>
+          </div>
+        </div>
+        <div class='row'>
+          <div class="col-sm-6">
+            <label for="fdkAPI" title="eg : ZUFLdoNwymPU6SOh0JjS">API Key</label>
+            <input type="text" onchange="setVerifiedFalse();" name="fdkAPI" id="apiKey" required><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-right">
+            <button name="verify" class="btn btn-primary verify-button" id="verifyButton" onclick="verifyApiKey()">Verify</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <button class="btn btn-default" data-toggle="collapse" data-target="#additional">Additional Settings</button>
+            <div id="additional" class = "collapse">
+              <div class="col-md-12">
+                <label for="disableInNotes"><input type="checkbox" name="disableInNotes" id="disableInNotes" value="false"> Disable Signature Management in Notes</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <label class="btn btn-default btn-file" data-toggle="tooltip" data-placement="bottom" title="NOTE: This will replace all your existing signature configurations.">
+              Upload backup<input type="file" id="signaturesBackup" name="myfile" style="display: none;" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="iparams-lvl2">
+    <h4>App Credentials Verified, Click on Install/Save to complete.</h4>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="{{{appclient}}}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <!-- optional-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <!-- optional-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+  <!-- Include Editor JS files. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/plugins/lists.min.js"></script>
+  <!-- Custom Javascript -->
+  <script type= "text/javascript">
+    var verified = false;
+    $("#verify-error").fadeIn(100).delay(5000).fadeOut(1000);
+    function recursiveGetData(client, xurl, headers){
+    // version 2
+      // for freshdesk api calls
+      // if used in iparams.html then pass the headers with api key
+      // if used inside app then pass the "key" for apikey in iparams
+      // pass the entire url
+      var dataList = [];
+      return Promise.resolve()
+      .then(function(){
+        var options;
+        if(typeof headers == typeof {}){
+          options = {
+            'headers' : headers,
+            'Content-Type': 'application/json'
+          };
+        }else if(typeof headers == typeof ""){
+          options = {
+            'headers' : {"Authorization": "Basic <%= encode(iparam." + headers + ") %>"},
+            'Content-Type': 'application/json'
+          };
+        }
+        return client.request.get(xurl, options)
+        .then(function(data){
+          if(data.hasOwnProperty('status') && data.status != 200){
+            throw data;
+          }
+          var temp = data;
+          dataList = dataList.concat(JSON.parse(data.response));
+          if(data.headers.hasOwnProperty('link')){
+            var link = data.headers.link;
+            var regex = /^<(.*)>\;/;
+            link = link.match(regex)[1];
+            return recursiveGetData(client, link, headers)
+            .then(function(data){
+              dataList = dataList.concat(data);
+              return dataList;
+            });
+          }
+          return dataList;
+        }).catch(function(err){
+          err.handled = false;
+          if(client.interface){
+            if( err.hasOwnProperty('status')){
+              var msg = '';
+              var title = '';
+              if(err.status == 429){
+                if( err.headers.hasOwnProperty('retry-after') ){
+                  msg = "You have reached request limit, please try after " + err.headers["retry-after"] + " secs.";
+                  title = "Code:" + err.status;
+                  client.interface.trigger("showNotify", {type: "danger", title: title, message: msg});
+                  err.handled = true;
+                }else{
+                  msg = "You have reached request limit, please try after some time.";
+                  title = "Code:" + err.status;
+                  client.interface.trigger("showNotify", {type: "danger", title: title, message: msg});
+                  err.handled = true;
+                }
+              }else{
+                try{
+                  msg = JSON.parse(err.response).message;
+                  title = "Code:" + err.status;
+                  client.interface.trigger("showNotify", {type: "danger", title: title, message: msg});
+                  err.handled = true;
+                }catch(x){
+                  msg = JSON.stringify(err);
+                  title = "Error:";
+                  client.interface.trigger("showNotify", {type: "danger", title: title, message: msg});
+                  err.handled = true;
+                }
+              }
+            }else{
+              client.interface.trigger("showNotify", { type: "danger", title: 'Error', message: JSON.stringify(error) });
+              err.handled =  true;
+            }
+          }
+          throw err;
+        });
+      });
+
+    }
+
+    function setVerifiedFalse(){
+      verified = false;
+      jQuery("#iparams-lvl2").hide();
+      activateVerifyButton();
+    }
+
+    function showLvl2(configs){
+      $("#iparams-lvl2").show();
+      $("#domain-apikey").hide();
+      $("#apiKey")[0].style.color = "green";
+      if(configs) {
+        if(configs['disableInNotes']) {
+          $('#disableInNotes').prop('checked', true);
+        }
+      }      
+    }
+
+    function verifyFailed(){
+      jQuery("#iparams-lvl2").hide();
+      jQuery("#domain-apikey").fadeIn(500).delay(7000).fadeOut(1000);
+      verified = false;
+    }
+
+    function activateVerifyButton(){
+      $('#verifyButton').removeAttr('disabled');
+      $('#verifyButton').text('Verify');
+    }
+
+    function deactivateVerifyButton(){
+      $('#verifyButton').attr('disabled', 'disabled');
+      $('#verifyButton').text('Verified');
+      verified = true;
+    }
+
+    function verifyApiKey(){
+      $('#verifyButton').attr('disabled', 'disabled');
+      $('#verifyButton').text('wait');
+      $('#errorsDiv').children().hide();
+      domain = jQuery('#domain').val();
+      apiKey = jQuery('#apiKey').val();
+      if (domain.length > 0 && apiKey.length > 0){
+        if (domain.match(/^[a-zA-Z0-9\-]+\.freshdesk\.com$/)){
+          var client;
+          var url = "https://" + domain + "/api/v2/settings/helpdesk";
+          headers = {
+            "Authorization": "Basic " + btoa(apiKey + ":x")
+          };
+          app.initialized().then(function(_client){
+            client = _client;
+            recursiveGetData(client, url, headers).then(function(){
+              deactivateVerifyButton();
+              showLvl2();
+            }).catch(function(error) {
+              setVerifiedFalse();
+              var msg;
+              if(error.hasOwnProperty('status')){
+                if(error.status == 401){
+                  $('#generalError').html("Error in validating credentials, please make sure the APIkey and domain are correct.").show().delay(5000).fadeOut(3000);
+                }else if(error.status == 429){
+                  if( error.headers.hasOwnProperty('retry-after') ){
+                    msg = "You have reached request limit, please try after " + error.headers["retry-after"] + " secs.";
+                    $('#generalError').html(msg).show().delay(5000).fadeOut(3000);
+                  }else{
+                    msg = "You have reached request limit, please try after some time.";
+                    $('#generalError').html(msg).show().delay(5000).fadeOut(3000);
+                  }
+                }else{
+                  try{
+                    msg = JSON.parse(error.response).message;
+                    $('#generalError').html(msg).show().delay(5000).fadeOut(3000);
+                  }catch(e){
+                    $('#generalError').html("Error in validating credentials, please make sure the APIkey and domain are correct.").show().delay(5000).fadeOut(3000);
+                  }
+                }
+              }else{
+                msg = JSON.stringify(error);
+                $('#generalError').html(msg).show().delay(5000).fadeOut(3000);
+              }
+            });
+          });
+          jQuery("#domainerror").hide();
+          return true;
+        } else{
+          jQuery("#domainerror").fadeIn(500).delay(7000).fadeOut(1000);
+          jQuery("#domain-apikey").hide();
+          jQuery("#iparams-lvl2").hide();
+          return false;
+          setVerifiedFalse();
+        }
+      }
+      else{
+        jQuery("#domain-apikey").fadeIn(500).delay(7000).fadeOut(1000);
+        jQuery("#iparams-lvl2").hide();
+        setVerifiedFalse();
+        return false;
+      }
+    }
+
+    /* Wrap everything inside function for security */
+    signaturePlugin = (function() {
+
+      // postConfigs, Freshdesk required method
+      function postConfigs() {
+        var save_data = {
+          domain: domain,
+          apiKey: apiKey,
+          disableInNotes: ($('#disableInNotes:checkbox:checked').length >= 1),
+          __meta: {
+            secure: ["apiKey"]
+          }
+        }
+        return save_data;
+      }
+
+      // getConfigs, Freshdesk required method
+      function getConfigs(configs) {
+        verified = true;
+        deactivateVerifyButton();
+        showLvl2(configs);
+      }
+
+      function validate() {
+        if(verified){
+          return true; 
+        }else{
+          $("#verify-error").fadeIn().delay(5000).fadeOut();
+          return false;
+        }
+      }
+
+      return {
+        postConfigs: postConfigs,
+        getConfigs: getConfigs,
+        validate: validate
+      } ;
+    })() ;
+
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    function postConfigs() {
+      return signaturePlugin.postConfigs() ;
+    }
+
+    function validate() {
+      return signaturePlugin.validate();
+    }
+
+    function getConfigs(configs) {
+      domain = configs.domain;
+      apiKey = configs.apiKey;
+      if (domain != undefined && domain != '' && apiKey != undefined && apiKey != '' ){
+        $("#apiKey").val(apiKey);
+        $("#domain").val(domain);
+        var exists = setInterval(function() {
+          if(jQuery().froalaEditor) {
+            clearInterval(exists) ;
+            signaturePlugin.getConfigs(configs) ;
+          }
+        }, 300) ;
+      }
+    }
+
+    $(function(){
+      app.initialized().then(function(_client){
+        client = _client;
+      })
+    });
+  </script>
+</body>
+</html>

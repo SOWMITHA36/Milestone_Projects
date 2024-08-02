@@ -1,0 +1,38 @@
+{
+  "platform-version": "2.3",
+  "dependencies": {
+    "uniqid": "5.2.0"
+  },
+  "product": {
+    "freshdesk": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onAppInstallHandler"
+        }
+      },
+      "location": {
+        "ticket_sidebar": {
+          "url": "signature-ticket-sidebar.html",
+          "icon": "icon.svg"
+        },
+        "ticket_background": {
+          "url": "signature-ticket-background.html",
+          "icon": "icon.svg"
+        },
+        "ticket_conversation_editor": {
+          "url": "signature-ticket-conversation-editor.html",
+          "icon": "icon.svg"
+        },
+        "new_email_requester_info": {
+          "url": "signature-new-email-requester-info.html",
+          "icon": "icon.svg"
+        }
+      }
+
+    }
+  },
+  "engines": {
+    "node": "18.20.4",
+    "fdk": "9.1.2"
+  }
+}
