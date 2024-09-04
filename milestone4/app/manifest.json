@@ -1,0 +1,19 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshservice": {
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "axios": "0.27.2"
+  },
+  "engines": {
+    "node": "18.18.2",
+    "fdk": "9.2.0"
+  }
+}
