@@ -1,7 +1,7 @@
-const { getOrCreateCollection, getValueFromCollection } = require("../utils/db");
+const { getOrCreateCollection, getValueFromCollection, deleteTicketFromCollection } = require("../utils/db");
 const { env, domain, apikey } = require('../config/env');
 const axios = require("axios");
-const cron = require("cron");
+const { Collection } = require("mongoose");
 
 const createConfig = async function (config) {
     try {
@@ -52,6 +52,7 @@ const createConfig = async function (config) {
 }
 const postConfig = async function (config) {
     try {
+        
         const details = await getValueFromCollection("configs");
         for (const ticket of details) {
             const freshdeskDomain = domain; 
@@ -62,7 +63,7 @@ const postConfig = async function (config) {
               console.log('Freshdesk ticket created:', freshdeskTicket);
       
               
-              await Ticket.deleteOne({ _id: ticket._id });
+              await deleteTicketFromCollection("configs", ticket);
             } catch (error) {
               console.error('Error creating Freshdesk ticket:', error);
               
@@ -102,16 +103,6 @@ const createFreshdeskTicket = async function (domain, apiKey, ticketDetails) {
       throw new Error('Failed to create Freshdesk ticket');
     }
   }
-  function initialize() {
-    try {
-      
-      new cron.CronJob('*/1 * * * *', postConfig, null, true, 'America/New_York');
-  
-    } catch (error) {
-      console.error('Error during initialization:', error);
-    }
-  }
-  initialize();
 module.exports = {
     createConfig,
     postConfig
